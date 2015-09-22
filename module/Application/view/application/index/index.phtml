@@ -1,0 +1,45 @@
+<?php
+ // module/Album/view/album/album/add.phtml:
+ $title = 'Calculater Application';
+ $this->headTitle($title);
+ ?>
+ <h2>&nbsp;<?php echo $this->escapeHtml($title); ?></h2>&nbsp;
+ <?php
+		 //$form = $this->form;
+		 //print_r($form);
+		 $form->setAttribute('action', $this->url('Application', array('action' => 'index')));
+		 $form->prepare();
+		 echo $this->form()->openTag($form);
+ 
+?>
+<div class="row">
+		 <div class="col-md-5">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?php echo $this->translate('Calculator') ?></h3>
+            </div>
+            <div>
+			<?php
+			//echo $this->val;
+			if(!empty($this->val) || $this->val=='0'){
+			?>
+			<p align="center">Answer is <?php echo $this->val;?></p>
+			<?php 
+			}
+			?>
+			<p align="left"><?php echo $this->formRow($form->get('num1'));?></p>
+			<p><?php //echo $this->formElementerrors($form->get('num1'));?></p>
+			<p><?php echo $this->formRow($form->get('num2'));?></p>
+			<p><?php //echo $this->formElementerrors($form->get('num2'));?></p>
+            <p><?php echo $this->formSubmit($form->get('addsubmit'));?>
+			&nbsp;<?php echo $this->formSubmit($form->get('subsubmit'));?>
+			&nbsp;<?php echo $this->formSubmit($form->get('mulsubmit'));?>
+			&nbsp;<?php echo $this->formSubmit($form->get('divsubmit'));?>
+			</p>
+			</div>
+        </div>
+    </div>
+</div>	
+<?php		
+ echo $this->form()->closeTag();
+?>
